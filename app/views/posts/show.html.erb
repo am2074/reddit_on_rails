@@ -1,0 +1,14 @@
+<%= @post.title %>
+<br>
+<%= @post.body %>
+
+<h4>Comments</h4>
+<% if user_signed_in? %>
+  <%= form_for [@post, Comment.new] do |form| %>
+    <%= form.text_area :body %>
+    <%= form.submit "save" %>
+    <% end %>
+<% else %>
+  You need to <%= link_to "log in", new_user_session_path %> or <%= link_to "sign up", new_user_registration_path %> to comment.
+<% end %>
+<ul> <%= render partial: 'comments/comment', collection: @post.comments %> </ul>

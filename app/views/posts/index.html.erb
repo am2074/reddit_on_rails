@@ -1,0 +1,17 @@
+<% @posts.each do |post| %>
+	<% if post.url? %> 
+		<%= link_to(post.title, post.url) %>
+	<% else %>
+		<%= link_to(post.title, post) %>
+	<% end %>
+	<div class="link-info">
+		submitted <%= time_ago_in_words(post.created_at) %> ago by <%= post.user.email %> 
+	</div> 
+	<div class="bottom-links">
+		<%= link_to "comments", post %>
+		<% if user_signed_in? && post.user_id == current_user.id %>
+		 	<%= link_to "delete", post_path(post), method: :delete, data: { confirm: "Are you sure you want to delete?"} %> 
+		<% end %> 
+	<br>
+
+<% end %> 
