@@ -1,9 +1,11 @@
 <% @posts.each do |post| %>
+  <h3>
 	<% if post.url? %> 
 		<%= link_to(post.title, post.url) %>
 	<% else %>
 		<%= link_to(post.title, post) %>
 	<% end %>
+   </h3>
 	<div class="link-info">
 		submitted <%= time_ago_in_words(post.created_at) %> ago by <%= post.user.email %> 
 	</div> 

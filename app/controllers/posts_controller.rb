@@ -23,6 +23,9 @@ class PostsController < ApplicationController
     end
   end
 
+  def edit
+  end 
+  
   def destroy
     @post.destroy
     redirect_back(fallback_location: root_path)

@@ -19,6 +19,7 @@
 //= require rails-ujs
 //= require turbolinks
 //= require_tree .
+//= require bootstrap-sprockets
 
 $(document).on('turbolinks:load', function() {
   $('.reply-form').hide();
