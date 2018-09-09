@@ -5,15 +5,13 @@ Rails.application.routes.draw do
   	resources :comments
   end
 
-  resources :posts do 
-  	member do 
-  	  put "like", to: "posts#upvote"
-   	  put "dislike", to: "posts#downvote"
-    end
-  end
-
   resources :comments do
   	resources :comments
+  end
+
+  resources :votes, only: [] do
+    get 'up', on: :collection
+    get 'down', on: :collection
   end
 
   
