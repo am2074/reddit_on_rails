@@ -13,6 +13,12 @@ class CommentsController < ApplicationController
     end
   end
 
+  def upvote
+    @comment = Comment.find(params[:comment_id])
+    @comment.upvote_by current_user
+    redirect_back fallback_location: root_path
+  end
+
   private
 
   def comment_params
